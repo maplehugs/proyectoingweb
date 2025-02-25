@@ -1,0 +1,468 @@
+/* Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bona Nova', sans-serif;
+    background: #f8f9fa;
+    color: #000000;
+    font-weight: normal;
+}
+
+/* Cabecera Superior */
+.top-header {
+    background: linear-gradient(45deg, #111111, #000000);
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.top-header .top-links {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.top-header .top-links a {
+    margin: 0 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Bona Nova', serif;
+}
+
+.top-header .top-links span {
+    margin: 0px;
+    color: #e0e0e0;
+}
+
+.top-header .social-links {
+    display: flex;
+    align-items: center;
+}
+
+.top-header .social-links a {
+    margin: 0 5px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+/* LOGO Y BARRA DE BUSQUEDA */
+.search-section {
+    background: url(Img/3dda729f459ee4df1cfa6750faa96f04.png);
+    padding: 25px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.search-section p {
+    color: #FFFFFF;
+    font-family: 'Bona Nova', serif;
+    font-weight: 500;
+}
+
+.search-section .logo h1 {
+    font-size: 2.5rem;
+    color: #CC9600;
+    font-family: 'Bona Nova', serif;
+    font-weight: 500;
+}
+
+.search-section .logo h1 span {
+    color: #CC9600;
+    font-family: 'Bona Nova', serif;
+    font-weight: 500;
+}
+
+.search-bar form {
+    position: relative;
+    max-width: 500px;
+    margin: 15px auto 0;
+    width: 100%;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ac6222;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Bona Nova', serif;
+}
+
+.search-bar button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Menu de Navegación */
+.main-nav {
+    background: #111111;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Bona Nova', serif;
+    position: relative;
+    z-index: 1000;
+}
+
+.main-nav a {
+    margin: 0 15px;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.main-nav a:hover {
+    color: #bebebe;
+}
+
+.main-nav .auth-links {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav .auth-links a {
+    margin-left: 15px;
+    font-size: 0.95rem;
+    color: #ffffff;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 700px;
+    background: url("Img/1ce823c4c571d1a8fb1b1f6b00372f3b.gif") no-repeat center/cover;
+    background-position: center -350px;
+}
+
+.hero .hero-text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 2rem;
+    width: 100%;
+    padding-top: 40px;
+    box-sizing: border-box;
+}
+
+.hero .hero-text h1 {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    background: radial-gradient(circle, #CC9600, #FF7700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.hero .hero-text p {
+    font-size: 1.1rem;
+    font-family: 'Bona Nova', serif;
+    color: #ffffff;
+}
+
+/* Sección de Productos/Tendencias - ESTILOS MEJORADOS */
+.products {
+    padding: 40px 20px;
+    background: #ffffff;
+}
+
+.products .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #000000;
+    font-family: 'Bona Nova', serif;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-item {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover .product-img img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #000000;
+    font-family: 'Bona Nova', serif;
+}
+
+.product-info p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.product-footer {
+    padding: 10px 15px;
+    background: #f8f8f8;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.product-footer a {
+    color: #9f652f;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.product-footer a:hover {
+    color: #744f00;
+}
+
+/* Formularios */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.formulario h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #9f652f;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #ac6222;
+}
+
+.extra-links {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.extra-links a {
+    text-decoration: none;
+    color: #9f652f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .hero {
+        background-position: center -200px;
+    }
+    
+    .products-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .product-img img {
+        height: 450px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero {
+        height: 500px;
+        background-position: center -100px;
+    }
+    
+    .hero .hero-text {
+        top: 15%;
+        padding-top: 30px;
+    }
+    
+    .hero .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .product-img img {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .main-nav {
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .main-nav .auth-links {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hero {
+        height: 400px;
+        background-position: center center;
+    }
+    
+    .hero .hero-text {
+        top: 20%;
+        padding-top: 20px;
+    }
+    
+    .hero .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .products-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .product-img img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-section .logo h1 {
+        font-size: 2rem;
+    }
+    
+    .hero .hero-text {
+        top: 25%;
+        padding-top: 15px;
+    }
+    
+    .hero .hero-text h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .product-img img {
+        height: 300px;
+    }
+    
+    .main-nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+    
+    .container {
+        width: 95%;
+        margin: 30px auto;
+        padding: 15px;
+    }
+    
+    .formulario h2 {
+        font-size: 1.5rem;
+    }
+    
+    .products .section-title {
+        font-size: 1.8rem;
+    }
+}
