@@ -194,8 +194,6 @@ DELIMITER ;
 
 DELIMITER $$
 
-DELIMITER $$
-
 CREATE TRIGGER trg_actualizar_stock
 AFTER INSERT ON Detalle_carrito
 FOR EACH ROW
@@ -244,3 +242,78 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+INSERT INTO Editorial (Nombre_Editorial) VALUES
+('Diana'), ('Penguin Random House'), ('Literatura Random House'), ('Debolsillo'), ('Planeta'),
+('Anagrama'), ('Tusquets Editores'), ('Alfaguara'), ('HarperCollins'), ('Vintage Books');
+
+INSERT INTO Categoria_Libro (Nombre_Categoria) VALUES
+('Autoayuda'), ('Crecimiento personal'), ('Ficción contemporánea'), ('Ficción'), ('Thriller psicológico'), 
+('Romance'), ('Ciencia ficción'), ('Fantasía'), ('Terror'),  ('Ensayo'), 
+('Biografía'), ('Historia'), ('Cómic / Novela gráfica'), ('Juvenil'), ('Clásicos literarios');
+
+INSERT INTO Autor (Nombre_Autor, Apellido_Autor) VALUES
+('Jordi', 'Wild'),
+('James', 'Clear'),
+('Gabriel', 'García Márquez'),
+('Joe', 'Dispenza'),
+('Sally', 'Rooney'),
+('Hanya', 'Yanagihara');
+
+INSERT INTO Libro (Titulo, ISBN, Precio, FK_Detalle_pedido, FK_Detalle_carrito, FK_Editorial, FK_Categoria, FK_Autor)
+VALUES
+('Anatomía del mal', 9789877804751, 52000, NULL, NULL, 1, 5, 1),
+('Hábitos atómicos', 9786077476719, 64000, NULL, NULL, 1, 1, 2),
+('En agosto nos vemos', 9788439743088, 70000, NULL, NULL, 2, 4, 3),
+('Deja de ser tú', 9786079344085, 72000, NULL, NULL, 1, 1, 4),
+('Normal People', 9781984822192, 70000, NULL, NULL, 3, 3, 5),
+('A Little Life', 9780385539265, 89000, NULL, NULL, 10, 3, 6);
+
+INSERT INTO Usuario (Nombre, Apellido, Email, Contraseña) VALUES
+('Angie', 'González', 'angie.gonzalez@example.com', 'Angie123'),
+('Carlos', 'Ramírez', 'carlos.ramirez@example.com', 'Carloz456'),
+('Natalia', 'Torres', 'natalia.torres@example.com', 'Natalia789');
+
+INSERT INTO Direccion_Envio (Pais, Ciudad, Direccion, Codigo_postal, FK_User_DIR) VALUES
+('Colombia', 'Bogotá', 'Calle 48B Sur #24D-45', '110931', 1),
+('Colombia', 'Bogotá', 'Carrera 7 #120-45', '110111', 2),
+('Colombia', 'Bogotá', 'Avenida Primero de Mayo #72-30', '110821', 3);
+
+INSERT INTO Carrito_compras (Fecha_creacion, Precio_Total, FK_User_Car) VALUES
+('2025-04-06', 116000, 1), -- Carrito de Angie
+('2025-04-03', 64000, 2),  -- Carrito de Carlos
+('2025-04-07', 159000, 3);  -- Carrito de Natalia
+
+-- Carrito de Angie: Anatomía del mal + Hábitos atómicos
+INSERT INTO Detalle_carrito (ID_Libro, cantidad, FK_Carro_ID) VALUES
+(1, 1, 1), (2, 1, 1);
+
+-- Carrito de Carlos: solo Hábitos atómicos
+INSERT INTO Detalle_carrito (ID_Libro, cantidad, FK_Carro_ID) VALUES
+(2, 1, 2);
+
+-- Carrito de Natalia: A Little Life + Normal People
+INSERT INTO Detalle_carrito (ID_Libro, cantidad, FK_Carro_ID) VALUES
+(6, 1, 3), (5, 1, 3);
+
+INSERT INTO Pedido (Fecha_pedido, Estado, FK_User) VALUES
+('2025-05-08', TRUE, 1),   -- Pedido de Angie (activo)
+('2025-05-15', FALSE, 2),  -- Pedido de Carlos (cancelado o completado)
+('2025-04-28', TRUE, 3);   -- Pedido de Natalia (activo)
+
+-- Pedido de Angie: Anatomía del mal + Hábitos atómicos
+INSERT INTO Detalle_pedido (ISBN_Libro, ID_Libro, Cantidad, FK_pedido) VALUES
+(9789877804751, 1, 1, 1),
+(9786077476719, 2, 1, 1);
+
+-- Pedido de Carlos: solo Hábitos atómicos
+INSERT INTO Detalle_pedido (ISBN_Libro, ID_Libro, Cantidad, FK_pedido) VALUES
+(9786077476719, 2, 1, 2);
+
+-- Pedido de Natalia: A Little Life + Normal People
+INSERT INTO Detalle_pedido (ISBN_Libro, ID_Libro, Cantidad, FK_pedido) VALUES
+(9780385539265, 6, 1, 3),
+(9781984822192, 5, 1, 3);
+
