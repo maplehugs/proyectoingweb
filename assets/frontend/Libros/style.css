@@ -602,3 +602,28 @@ body {
     }
     
 }
+
+input[type="button"] {
+  background-color: #ce852c; /* verde elegante */
+  color: rgb(243, 238, 238);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+input[type="button"]:hover {
+  background-color: #be7430;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+input[type="button"]:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
