@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entre Lineas - Sobre Nosotros</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="top-links">
+            <a href="#">Preguntas Frecuentes</a>
+            <span>|</span>
+            <a href="#">Ayuda</a>
+            <span>|</span>
+            <a href="#">Soporte</a>
+        </div>
+    </header>
+
+    <div class="search-section">
+        <div class="logo">
+            <h1>ENTRE <span>LINEAS</span></h1>
+        </div>
+        <div class="search-bar">
+            <form action="">
+                <input type="text" placeholder="¿Qué estas buscando hoy?">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <nav class="main-nav">
+        <a href="Index.html">Home</a>
+        <a href="SobreNosotros.html">Sobre Nosotros</a>
+        <a href="Información.html">Tienda</a>
+        <a href="QuieneSomos.html">Domicilios</a>
+        <div class="auth-links">
+            <a href="Login.html">Iniciar Sesión</a>
+            <a href="Registro.html">Registrarse</a>
+        </div>
+    </nav>
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Sobre nosotros</h2>
+            <p class="about-text">Somos una librería en línea apasionada por conectar a los lectores con historias que
+                transforman vidas. Desde 2010, nos hemos dedicado a curar una selección única de libros que inspiran,
+                educan y entretienen.</p>
+
+            <div class="gallery">
+                <img src="Img/pexels-fauxels-3184418.jpg" alt="Nuestra librería" class="main-image" id="mainImage">
+                <div class="thumbnails">
+                    <img src="Img/pexels-fauxels-3184418.jpg" alt="Interior librería" class="thumbnail active"
+                        onclick="changeImage('Img/pexels-fauxels-3184418.jpg', this)">
+                    <img src="Img/pexels-pixabay-159711.jpg" alt="Evento literario" class="thumbnail"
+                        onclick="changeImage('Img/pexels-pixabay-159711.jpg', this)">
+                    <img src="Img/pexels-thought-catalog-317580-904616.jpg" alt="Sección infantil" class="thumbnail"
+                        onclick="changeImage('Img/pexels-thought-catalog-317580-904616.jpg', this)">
+                    <img src="Img/pexels-minan1398-775998.jpg" alt="Área de lectura" class="thumbnail"
+                        onclick="changeImage('Img/pexels-minan1398-775998.jpg', this)">
+                    <img src="Img/pexels-lina-1741231.jpg" alt="Padres" class="thumbnail"
+                        onclick="changeImage('Img/pexels-lina-1741231.jpg', this)">
+                    <img src="Img/pexels-kimvanvuuren-1599991.jpg" alt="Niños" class="thumbnail"
+                        onclick="changeImage('Img/pexels-kimvanvuuren-1599991.jpg', this)">
+                </div>
+            </div>
+
+            <div class="image-text-section">
+                <img src="Img/pexels-toulouse-3457273.jpg" alt="Nuestra historia">
+                <div class="text-content">
+                    <h3>Nuestra historia</h3>
+                    <p>Todo comenzó en un pequeño local del centro de la ciudad, donde nuestro fundador, Javier
+                        Martínez, soñaba con crear un espacio donde los amantes de los libros pudieran encontrar tanto
+                        clásicos atemporales como las últimas novedades editoriales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="contact-footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h4>Contacto</h4>
+                <p>📍 Carrera 15 # 88-64, Bogotá</p>
+                <p>📞 +57 601 555 1234</p>
+                <p>📧 contacto@entrelineas.com</p>
+            </div>
+            <div class="business-hours">
+                <h4>Horario de atención</h4>
+                <p>Lunes a Viernes: 9am - 8pm</p>
+                <p>Sábados: 10am - 6pm</p>
+                <p>Domingos: Cerrado</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para cambiar la imagen principal
+        function changeImage(newSrc, clickedThumb) {
+            // Actualizar la imagen principal
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = newSrc;
+
+            // Quitar clase 'active' de todos los thumbnails
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+
+            // Añadir clase 'active' al thumbnail clickeado
+            clickedThumb.classList.add('active');
+
+            // Animación suave de transición
+            mainImage.style.opacity = 0;
+            setTimeout(() => {
+                mainImage.style.opacity = 1;
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
