@@ -6,7 +6,8 @@ CREATE TABLE Usuario (
     Nombre VARCHAR(100),
     Apellido VARCHAR(100),
     Email VARCHAR(100) UNIQUE,
-    Contraseña VARCHAR(50)
+    Contraseña VARCHAR(50), 
+    Teléfono BIGINT UNIQUE
 );
 
 CREATE TABLE Pedido (
