@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Entre Lineas - Página Principal</title>
+        <link rel="stylesheet" href="style.css"> <!-- Tu archivo de estilos personalizado -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Cabecera superior con enlaces informativos y sociales -->
+        <header class="top-header">
+            <div class="top-links">
+            <a href="Preguntas.html">Preguntas Frecuentes</a>
+            <span>|</span>
+            <a href="#">Ayuda</a>
+            <span>|</span>
+            <a href="#">Soporte</a>
+            </div>
+        </header>
+
+        <!-- Sección del logo y barra de búsqueda -->
+        <div class="search-section">
+            <div class="logo">
+                <h1>ENTRE <span>LINEAS</span></h1>
+            </div>
+            <div class="search-bar">
+            <form action="">
+                <input type="text" placeholder="¿Qué estas buscando hoy?">
+                <button type="submit">
+                <i class="fa fa-search"></i>
+                </button>
+            </form>
+            </div>
+        </div>
+        
+
+        <!-- Menú de navegación -->
+        <nav class="main-nav">
+            <a href="Index.html">Home</a>
+            <a href="SobreNosotros.html">Sobre Nosotros</a>
+            <a href="Tienda.html">Tienda</a>
+            <a href="QuieneSomos.html">Domicilios</a>
+            <div class="auth-links">
+            <a href="carrito.html">
+                <img src="Img/carrito-de-compras.png" alt="Carrito de compras" width="24" height="24">
+            </a>    
+            <a href="Login.html">Iniciar Sesión</a>
+            <a href="Registro.html">Registrarse</a>
+            </div>
+        </nav>
+    
+        <section class="faq">
+            <h2>Preguntas Frecuentes</h2>
+          
+            <!-- Categoría 1: Pedidos -->
+            <div class="faq-category">
+              <input type="checkbox" id="cat1" class="faq-category-toggle">
+              <label for="cat1" class="faq-category-title">Pedidos</label>
+              <div class="faq-items">
+                <div class="faq-item">
+                  <input type="checkbox" id="faq1" class="faq-toggle">
+                  <label for="faq1" class="faq-question">¿Cómo hago un pedido?</label>
+                  <div class="faq-answer">Agrega libros al carrito y sigue el proceso de pago.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq2" class="faq-toggle">
+                  <label for="faq2" class="faq-question">¿Puedo modificar un pedido ya realizado?</label>
+                  <div class="faq-answer">Sí, si no ha sido enviado aún. Contáctanos lo antes posible.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq3" class="faq-toggle">
+                  <label for="faq3" class="faq-question">¿Puedo cancelar un pedido?</label>
+                  <div class="faq-answer">Sí, puedes cancelarlo antes del envío sin costo adicional.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq4" class="faq-toggle">
+                  <label for="faq4" class="faq-question">¿Recibiré una confirmación de pedido?</label>
+                  <div class="faq-answer">Sí, por correo electrónico justo después de completar la compra.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq5" class="faq-toggle">
+                  <label for="faq5" class="faq-question">¿Puedo comprar sin registrarme?</label>
+                  <div class="faq-answer">Sí, puedes hacer pedidos como invitado.</div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Categoría 2: Envíos -->
+            <div class="faq-category">
+              <input type="checkbox" id="cat2" class="faq-category-toggle">
+              <label for="cat2" class="faq-category-title">Envíos</label>
+              <div class="faq-items">
+                <div class="faq-item">
+                  <input type="checkbox" id="faq6" class="faq-toggle">
+                  <label for="faq6" class="faq-question">¿Cuánto tarda el envío?</label>
+                  <div class="faq-answer">De 2 a 5 días hábiles en envíos nacionales.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq7" class="faq-toggle">
+                  <label for="faq7" class="faq-question">¿Cuánto cuesta el envío?</label>
+                  <div class="faq-answer">Es gratuito en compras mayores a $50. De lo contrario, tiene un costo de $5.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq8" class="faq-toggle">
+                  <label for="faq8" class="faq-question">¿Puedo hacer seguimiento a mi pedido?</label>
+                  <div class="faq-answer">Sí, recibirás un número de seguimiento por email.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq9" class="faq-toggle">
+                  <label for="faq9" class="faq-question">¿Hacen envíos internacionales?</label>
+                  <div class="faq-answer">Sí, con un costo adicional. Contáctanos para más detalles.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq10" class="faq-toggle">
+                  <label for="faq10" class="faq-question">¿Qué pasa si no estoy cuando llega el pedido?</label>
+                  <div class="faq-answer">La empresa de mensajería se comunicará para un segundo intento.</div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Categoría 3: Pagos -->
+            <div class="faq-category">
+              <input type="checkbox" id="cat3" class="faq-category-toggle">
+              <label for="cat3" class="faq-category-title">Pagos</label>
+              <div class="faq-items">
+                <div class="faq-item">
+                  <input type="checkbox" id="faq11" class="faq-toggle">
+                  <label for="faq11" class="faq-question">¿Qué métodos de pago aceptan?</label>
+                  <div class="faq-answer">Tarjetas de crédito/débito, PayPal y transferencias bancarias.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq12" class="faq-toggle">
+                  <label for="faq12" class="faq-question">¿El pago es seguro?</label>
+                  <div class="faq-answer">Sí, usamos plataformas de pago seguras con cifrado SSL.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq13" class="faq-toggle">
+                  <label for="faq13" class="faq-question">¿Puedo pagar a plazos?</label>
+                  <div class="faq-answer">Actualmente no, pero estamos trabajando en ello.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq14" class="faq-toggle">
+                  <label for="faq14" class="faq-question">¿Puedo obtener una factura?</label>
+                  <div class="faq-answer">Sí, al completar el pedido puedes solicitarla.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq15" class="faq-toggle">
+                  <label for="faq15" class="faq-question">¿Qué hago si tengo problemas con el pago?</label>
+                  <div class="faq-answer">Contáctanos de inmediato vía email o WhatsApp.</div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Categoría 4: Devoluciones -->
+            <div class="faq-category">
+              <input type="checkbox" id="cat4" class="faq-category-toggle">
+              <label for="cat4" class="faq-category-title">Devoluciones y Reembolsos</label>
+              <div class="faq-items">
+                <div class="faq-item">
+                  <input type="checkbox" id="faq16" class="faq-toggle">
+                  <label for="faq16" class="faq-question">¿Puedo devolver un libro?</label>
+                  <div class="faq-answer">Sí, dentro de los 15 días posteriores a la compra.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq17" class="faq-toggle">
+                  <label for="faq17" class="faq-question">¿Qué condiciones debe cumplir el libro para devolverlo?</label>
+                  <div class="faq-answer">Debe estar en perfectas condiciones y sin uso visible.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq18" class="faq-toggle">
+                  <label for="faq18" class="faq-question">¿Cómo solicito un reembolso?</label>
+                  <div class="faq-answer">Escríbenos indicando el número de pedido y el motivo.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq19" class="faq-toggle">
+                  <label for="faq19" class="faq-question">¿Cuánto tarda en procesarse un reembolso?</label>
+                  <div class="faq-answer">Entre 3 y 7 días hábiles una vez aprobado.</div>
+                </div>
+                <div class="faq-item">
+                  <input type="checkbox" id="faq20" class="faq-toggle">
+                  <label for="faq20" class="faq-question">¿Puedo devolver un libro digital?</label>
+                  <div class="faq-answer">No, los libros digitales no tienen devolución.</div>
+                </div>
+              </div>
+            </div>
+          </section>
