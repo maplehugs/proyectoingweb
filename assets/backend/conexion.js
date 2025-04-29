@@ -111,20 +111,56 @@ app.post("/carrito", (req, res) => {
 });
 
 app.delete("/carrito/:id", (req, res) => {
-    const { id } = req.params;
-
+    const id = req.params.id;  
+    
+    if (!id) {
+        return res.status(400).json({ error: "ID del libro no proporcionado" });
+    }
+   
     const sql = "DELETE FROM Carrito WHERE ID = ?";
     conexion.query(sql, [id], (err, result) => {
         if (err) {
             console.error("Error al eliminar libro:", err);
             return res.status(500).json({ error: "No se pudo eliminar el libro" });
         }
-
+        
         if (result.affectedRows === 0) {
             return res.status(404).json({ error: "Libro no encontrado" });
         }
-
+        
         res.json({ mensaje: "Libro eliminado correctamente" });
+    });
+});
+
+app.put("/carrito/:id", (req, res) => {
+    const id = req.params.id;  
+    const { name, author, price } = req.body;  
+
+    
+    if (!name || !author || !price) {
+        return res.status(400).json({ error: "Todos los campos (name, author, price) son obligatorios" });
+    }
+
+    
+    if (isNaN(price)) {
+        return res.status(400).json({ error: "El precio debe ser un número válido" });
+    }
+
+    
+    const sql = "UPDATE Carrito SET name = ?, author = ?, price = ? WHERE ID = ?";
+    conexion.query(sql, [name, author, parseFloat(price), id], (err, result) => {
+        if (err) {
+            console.error("Error al actualizar libro:", err);
+            return res.status(500).json({ error: "Error al actualizar el libro en la base de datos" });
+        }
+
+        
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "Libro no encontrado con el ID proporcionado" });
+        }
+
+        
+        res.json({ mensaje: "Libro actualizado correctamente" });
     });
 });
 
