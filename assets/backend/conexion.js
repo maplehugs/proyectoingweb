@@ -12,7 +12,7 @@ const conexion = mysql.createConnection({
     host: "localhost",
     database: "libreriabd", 
     user: "root",
-    password: ""
+    password: "F@rangel18"
 });
 
 conexion.connect(function(err) {
@@ -81,5 +81,52 @@ const PORT = 3300;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+app.get("/carrito", (req, res) => {
+    const sql = "SELECT * FROM Carrito";
+    conexion.query(sql, (err, results) => {
+        if (err) {
+            console.error("Error al obtener los libros del carrito:", err);
+            return res.status(500).json({ error: "Error en la consulta" });
+        }
+        res.json(results);
+    });
+});
+
+app.post("/carrito", (req, res) => {
+    const { name, author, price } = req.body;
+
+    if (!name || !author || !price) {
+        return res.status(400).json({ error: "Faltan datos del libro" });
+    }
+
+    const sql = "INSERT INTO Carrito (name, author, price) VALUES (?, ?, ?)";
+    conexion.query(sql, [name, author, price], (err, result) => {
+        if (err) {
+            console.error("Error al agregar libro al carrito:", err);
+            return res.status(500).json({ error: "No se pudo agregar el libro" });
+        }
+        res.json({ mensaje: "Libro agregado al carrito correctamente", id: result.insertId });
+    });
+});
+
+app.delete("/carrito/:id", (req, res) => {
+    const { id } = req.params;
+
+    const sql = "DELETE FROM Carrito WHERE ID = ?";
+    conexion.query(sql, [id], (err, result) => {
+        if (err) {
+            console.error("Error al eliminar libro:", err);
+            return res.status(500).json({ error: "No se pudo eliminar el libro" });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "Libro no encontrado" });
+        }
+
+        res.json({ mensaje: "Libro eliminado correctamente" });
+    });
+});
+
 
 module.exports = conexion;
