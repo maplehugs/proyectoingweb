@@ -190,7 +190,7 @@ body {
 
 .products .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 30px;
     color: #000000;
     font-family: 'Bona Nova', serif;
@@ -360,8 +360,8 @@ body {
 
 .cart-section .section-title {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
     color: #000000;
     font-family: 'Bona Nova', serif;
 }
@@ -502,7 +502,7 @@ body {
 
 .about-text {
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.5;
     margin: 0 auto 40px;
     text-align: center;
     max-width: 800px;
@@ -587,7 +587,7 @@ body {
 
 .image-text-section p {
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 1.5;
     color: #555;
 }
 
@@ -633,6 +633,7 @@ body {
 /* Para todos los h2 seguidos de párrafos en general */
 .about-section h2 {
     margin-bottom: 1.5rem;
+    font-size: 2.2rem;
     /* 24px */
 }
 
@@ -649,8 +650,7 @@ body {
 
 .help-section {
     background: #ffffff;
-    padding: 50px 20px;
-    margin-top: 60px;
+    padding: 40px 20px;
 }
 
 .help-section .container {
@@ -660,8 +660,8 @@ body {
 }
 
 .help-section .section-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
     color: #000000;
     font-family: 'Bona Nova', serif;
 }
@@ -688,6 +688,7 @@ body {
     flex: 1;
     min-width: 280px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 40px;
 }
 
 .help-box:hover {
@@ -706,6 +707,7 @@ body {
     font-size: 1rem;
     color: #555;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .help-box a {
@@ -721,7 +723,7 @@ body {
 
 .formulario-soporte {
     background: #ffffff;
-    padding: 60px 20px;
+    padding: 40px 20px;
     font-family: 'Bona Nova', serif;
 }
 
@@ -733,20 +735,26 @@ body {
 
 .formulario-soporte h1 {
     font-size: 2.2rem;
-    margin-bottom: 10px;
+    margin-bottom: 1.5rem;
     color: #000000;
+    text-align: center;
 }
 
 .formulario-soporte .intro {
     font-size: 1.1rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #555;
+    line-height: 1.5;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .formulario-contacto .campo {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .formulario-contacto label {
@@ -782,6 +790,9 @@ body {
     cursor: pointer;
     font-family: 'Bona Nova', serif;
     transition: background-color 0.3s ease;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .btn-enviar:hover {
@@ -790,7 +801,7 @@ body {
 
 .domicilios {
     background: #ffffff;
-    padding: 60px 20px;
+    padding: 40px 20px;
     font-family: 'Bona Nova', serif;
 }
 
@@ -802,8 +813,9 @@ body {
 
 .domicilios h1 {
     font-size: 2.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
     color: #000000;
+    text-align: center;
 }
 
 .domicilios h2 {
@@ -815,9 +827,12 @@ body {
 
 .domicilios p,
 .domicilios li {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #333;
-    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .domicilios ul {
@@ -941,7 +956,7 @@ body {
     }
 
     .products .section-title {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
 }
@@ -977,19 +992,18 @@ input[type="button"]:active {
 .faq {
     max-width: 700px;
     margin: 2rem auto;
-    padding: 2rem;
-    font-family: Candara, sans-serif;
+    padding: 40px 20px;
+    margin-top: 0px;
 }
 
 .faq h2 {
     text-align: center;
     font-size: 2.2rem;
-    margin-bottom: 2rem;
-    color: #7f4804;
+    margin-bottom: 40px;
 }
 
 .faq-category {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
