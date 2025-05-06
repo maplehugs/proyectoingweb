@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Entre Lineas - Página Principal</title>
-    <link rel="stylesheet" href="style.css"> <!-- Tu archivo de estilos personalizado -->
+    <title>Entre Lineas - Inicio de Sesión</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400&display=swap" rel="stylesheet">
 </head>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/6807bd7b9da1ea190e653e9a/1ipf3ob4n';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
 
 <body>
     <!-- Cabecera superior con enlaces informativos y sociales -->
     <header class="top-header">
         <div class="top-links">
-            <a href="Preguntas.html">Preguntas Frecuentes</a>
+            <a href="#">Preguntas Frecuentes</a>
             <span>|</span>
-            <a href="Ayuda.html">Ayuda</a>
+            <a href="#">Ayuda</a>
             <span>|</span>
-            <a href="Soporte.html">Soporte</a>
+            <a href="#">Soporte</a>
         </div>
     </header>
 
@@ -51,17 +36,16 @@
         </div>
     </div>
 
-
     <!-- Menú de navegación -->
     <nav class="main-nav">
         <a href="Index.html">Home</a>
-        <a href="SobreNosotros.html">Sobre Nosotros</a>
+        <a href="#">Sobre Nosotros</a>
         <a href="Tienda.html">Tienda</a>
-        <a href="Domicilios.html">Domicilios</a>
+        <a href="#">Domicilios</a>
         <div class="auth-links">
             <a href="carrito.html">
                 <img src="Img/carrito-de-compras.png" alt="Carrito de compras" width="24" height="24">
-            </a>
+            </a>    
             <a href="Login.html">Iniciar Sesión</a>
             <a href="Registro.html">Registrarse</a>
         </div>
@@ -72,12 +56,12 @@
         <div class="logo">
             <img src="Img/logo-png.png" alt="Logo">
         </div>
-        <form class="formulario" id="login-form"> <!-- Añadido ID aquí -->
+        <form class="formulario" id="login-form">
             <h2>Iniciar Sesión</h2>
 
             <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" placeholder="Ingresa tu correo electrónico" required>
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" placeholder="Ingresa tu correo electrónico" required>
             </div>
 
             <div class="form-group">
@@ -94,70 +78,67 @@
 
             <div class="extra-links">
                 <a href="#">¿Olvidaste tu contraseña?</a>
-                <a href="Registro.html">¿No tienes cuenta? Regístrate</a>
+                <a href="./Registro.html">¿No tienes cuenta? Regístrate</a>
             </div>
         </form>
     </div>
 
     <script>
-        document.getElementById('login-form').addEventListener('submit', async function (event) {
-            event.preventDefault();
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('login-form').addEventListener('submit', async function (event) {
+                event.preventDefault(); // Previene la recarga de la página al enviar el formulario
 
-            // Deshabilitar el botón durante el envío
-            const submitButton = this.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Enviando...';
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.disabled = true; // Deshabilita el botón para evitar múltiples clics
+                submitButton.textContent = 'Enviando...';
 
-            // Captura los datos del formulario
-            const formData = {
-                email: document.getElementById('email').value.trim(),
-                password: document.getElementById('password').value.trim(),
-            };
+                const formData = {
+                    correo: document.getElementById('correo').value.trim().toLowerCase(),  // Asegura que el correo esté en minúsculas
+                    password: document.getElementById('password').value.trim(),
+                };
 
-            // Validación básica
-            if (!formData.email || !formData.password) {
-                alert("Por favor, completa todos los campos.");
-                submitButton.disabled = false;
-                submitButton.textContent = 'INICIAR SESIÓN';
-                return;
-            }
-
-            try {
-                // Enviar datos al backend usando fetch
-                const response = await fetch('http://localhost:5000/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                // Manejar la respuesta del servidor
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Error al iniciar sesión');
+                // Validación de campos vacíos
+                if (!formData.correo || !formData.password) {
+                    alert("Por favor, completa todos los campos.");
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'INICIAR SESIÓN';
+                    return;
                 }
 
-                const data = await response.json();
+                try {
+                    const response = await fetch('http://localhost:3300/login', {  // URL del backend
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData), // Envía los datos en formato JSON
+                    });
 
-                // Manejar el "Recordarme"
-                if (document.getElementById('recordar').checked) {
-                    localStorage.setItem('userSession', JSON.stringify(data));
-                } else {
-                    sessionStorage.setItem('userSession', JSON.stringify(data));
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Error al iniciar sesión');
+                    }
+
+                    const data = await response.json();
+
+                    // Almacenar datos de sesión en el almacenamiento adecuado
+                    if (document.getElementById('recordar').checked) {
+                        localStorage.setItem('userSession', JSON.stringify(data));
+                    } else {
+                        sessionStorage.setItem('userSession', JSON.stringify(data));
+                    }
+
+                    // Redirigir a la página de Tienda después de un inicio de sesión exitoso
+                    window.location.href = 'Tienda.html';
+
+                } catch (error) {
+                    alert('Error: ' + error.message);  // Mostrar error en caso de fallo
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'INICIAR SESIÓN';
                 }
-
-                // Redireccionar
-                window.location.href = 'dashboard.html';
-
-            } catch (error) {
-                alert('Error: ' + error.message);
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = 'INICIAR SESIÓN';
-            }
+            });
         });
     </script>
 </body>
-
 </html>
