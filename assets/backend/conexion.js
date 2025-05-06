@@ -26,10 +26,10 @@ conexion.connect(function(err) {
 app.post('/login', (req, res) => {
     const { correo, password } = req.body;
 
-    const sql = "SELECT * FROM Usuario WHERE correo = ?";
+    const sql = "SELECT * FROM Usuario WHERE Email = ?";
 
     conexion.query(sql, [correo], (err, result) => {
-        if (err) {
+        if (err) { 
             console.error("Error al consultar usuario:", err);
             return res.status(500).json({ error: "Error al consultar usuario" });
         }
