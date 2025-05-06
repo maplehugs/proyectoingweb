@@ -4,35 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Entre Lineas - Página Principal</title>
-    <link rel="stylesheet" href="style.css"> <!-- Tu archivo de estilos personalizado -->
+    <title>Entre Lineas - Carrito de Compras</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400&display=swap" rel="stylesheet">
 </head>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/6807bd7b9da1ea190e653e9a/1ipf3ob4n';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
 
 <body>
     <!-- Cabecera superior con enlaces informativos y sociales -->
     <header class="top-header">
         <div class="top-links">
-            <a href="Preguntas.html">Preguntas Frecuentes</a>
+            <a href="#">Preguntas Frecuentes</a>
             <span>|</span>
-            <a href="Ayuda.html">Ayuda</a>
+            <a href="#">Ayuda</a>
             <span>|</span>
-            <a href="Soporte.html">Soporte</a>
+            <a href="#">Soporte</a>
         </div>
     </header>
 
@@ -51,13 +37,13 @@
         </div>
     </div>
 
-
     <!-- Menú de navegación -->
     <nav class="main-nav">
         <a href="Index.html">Home</a>
         <a href="SobreNosotros.html">Sobre Nosotros</a>
         <a href="Tienda.html">Tienda</a>
-        <a href="Domicilios.html">Domicilios</a>
+        <a href="QuieneSomos.html">Domicilios</a>
+        <a href="libros.html">Ver Libros</a>
         <div class="auth-links">
             <a href="carrito.html">
                 <img src="Img/carrito-de-compras.png" alt="Carrito de compras" width="24" height="24">
@@ -71,7 +57,7 @@
     <section class="cart-section">
         <h2 class="section-title">Carrito de compras</h2>
         <div class="cart-container">
-            <div class="cart-empty" id="cart-empty">
+            <div class="cart-empty" id="cart-empty" style="display: none;">
                 <p>Agrega un producto</p>
             </div>
             <div class="cart-items" id="cart-items">
@@ -85,9 +71,80 @@
                     <p>Total: <span id="total-price">$0.00</span></p>
                 </div>
                 <button class="btn" id="checkout-button">Comprar</button>
-            </div>
+            </div>            
         </div>
     </section>
+
+    
+    <script>
+        // Cargar carrito desde localstorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartEmptyMessage = document.getElementById('cart-empty');
+
+        // Renderizar carrito
+        function renderCart() {
+            if (cart.length === 0) {
+                cartEmptyMessage.style.display = 'block';
+                cartItemsContainer.innerHTML = '';
+            } else {
+                cartEmptyMessage.style.display = 'none';
+                cartItemsContainer.innerHTML = '';
+
+                let totalPrice = 0;
+
+                cart.forEach((book, index) => {
+                    const bookDiv = document.createElement('div');
+                    bookDiv.classList.add('cart-item');
+                    bookDiv.innerHTML = `
+                        <p><strong>${book.name}</strong> por ${book.author}</p>
+                        <p>Precio: $${book.price}</p>
+                        <button class="btn-delete" onclick="deleteBook(${index})">Eliminar</button>
+                    `;
+                    cartItemsContainer.appendChild(bookDiv);
+                    totalPrice += book.price;
+                });
+
+                // Actualizar resumen
+                document.getElementById('total-price').textContent = `$${totalPrice.toFixed(2)}`;
+                document.getElementById('total-items').textContent = cart.length;
+            }
+        }
+
+        // Eliminar producto
+        function deleteBook(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart)); // Guardar cambios
+            renderCart(); // Actualizar vista
+        }
+
+        // Inicializar
+        renderCart();
+    </script>
+
+    
+    <style>
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
+        .cart-item {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </body>
 
 </html>
