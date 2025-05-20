@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entre Lineas - Gestión de Libros</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Cabecera superior con enlaces informativos y sociales -->
+    <header class="top-header">
+        <div class="top-links">
+            <a href="Preguntas.html">Preguntas Frecuentes</a>
+            <span>|</span>
+            <a href="Ayuda.html">Ayuda</a>
+            <span>|</span>
+            <a href="Soporte.html">Soporte</a>
+        </div>
+    </header>
+
+    <!-- Sección del logo y barra de búsqueda -->
+    <div class="search-section">
+        <div class="logo">
+            <h1>ENTRE <span>LINEAS</span></h1>
+        </div>
+        <div class="search-bar">
+            <form action="">
+                <input type="text" placeholder="¿Qué estas buscando hoy?">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Menú de navegación -->
+    <nav class="main-nav">
+        <a href="Index.html">Home</a>
+        <a href="SobreNosotros.html">Sobre Nosotros</a>
+        <a href="Tienda.html">Tienda</a>
+        <a href="Domicilios.html">Domicilios</a>
+        <a href="Gestion_de_libros.html" class="active">Gestión de libros</a>
+        <div class="auth-links">
+            <a href="carrito.html">
+                <img src="Img/carrito-de-compras.png" alt="Carrito de compras" width="24" height="24">
+            </a>
+            <a href="Login.html">Iniciar Sesión</a>
+            <a href="Registro.html">Registrarse</a>
+        </div>
+    </nav>
+
+    <!-- Contenido principal de gestión de libros -->
+    <div class="management-container">
+        <h2>Gestión de libros</h2>
+        
+        <!-- Botón para agregar nuevo libro -->
+        <button id="add-book-btn" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+        </button>
+        
+        <!-- Tabla de libros -->
+        <div class="table-responsive">
+            <table id="books-table" class="management-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Portada</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Los libros se cargarán dinámicamente con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar libros -->
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">Agregar libro</h3>
+            <form id="book-form">
+                <input type="hidden" id="book-id">
+                
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input type="text" id="title" required>
+                    <div class="error-message" id="title-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Autor</label>
+                    <input type="text" id="author" required>
+                    <div class="error-message" id="author-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <textarea id="description" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Precio</label>
+                    <input type="number" id="price" step="0.01" required>
+                    <div class="error-message" id="price-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" required>
+                    <div class="error-message" id="stock-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">URL de la imagen</label>
+                    <input type="text" id="image" required>
+                    <div class="error-message" id="image-error"></div>
+                </div>
+                
+                <button type="submit" class="btn btn-submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content confirm-modal">
+            <p>¿Estás seguro de que deseas eliminar este libro?</p>
+            <div class="confirm-buttons">
+                <button id="confirm-delete" class="btn btn-danger">Eliminar</button>
+                <button id="cancel-delete" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de detalles del libro -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content detail-modal">
+            <span class="close-modal">&times;</span>
+            <div class="detail-container">
+                <div class="detail-image">
+                    <img id="detail-img" src="" alt="Portada del libro">
+                </div>
+                <div class="detail-info">
+                    <h3 id="detail-title"></h3>
+                    <p class="detail-author" id="detail-author"></p>
+                    <p class="detail-description" id="detail-description"></p>
+                    <p class="detail-price"><strong>Precio:</strong> $<span id="detail-price"></span></p>
+                    <p class="detail-stock"><strong>Stock:</strong> <span id="detail-stock"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let books = [];
+        let currentBookId = null;
+        
+        // Elementos del DOM
+        const addBookBtn = document.getElementById('add-book-btn');
+        const bookModal = document.getElementById('book-modal');
+        const confirmModal = document.getElementById('confirm-modal');
+        const detailModal = document.getElementById('detail-modal');
+        const bookForm = document.getElementById('book-form');
+        const booksTable = document.getElementById('books-table').getElementsByTagName('tbody')[0];
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const cancelDeleteBtn = document.getElementById('cancel-delete');
+        const confirmDeleteBtn = document.getElementById('confirm-delete');
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBooks();
+            
+            addBookBtn.addEventListener('click', () => {
+                openBookModal();
+            });
+            
+            bookForm.addEventListener('submit', handleFormSubmit);
+            
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    closeAllModals();
+                });
+            });
+            
+            cancelDeleteBtn.addEventListener('click', () => {
+                confirmModal.style.display = 'none';
+            });
+            
+            confirmDeleteBtn.addEventListener('click', deleteBook);
+            
+            window.addEventListener('click', (event) => {
+                if (event.target === bookModal || event.target === confirmModal || event.target === detailModal) {
+                    closeAllModals();
+                }
+            });
+        });
+        
+        // Funciones
+        function closeAllModals() {
+            bookModal.style.display = 'none';
+            confirmModal.style.display = 'none';
+            detailModal.style.display = 'none';
+        }
+        
+        function openBookModal(book = null) {
+            const modalTitle = document.getElementById('modal-title');
+            const form = document.getElementById('book-form');
+            
+            if (book) {
+                modalTitle.textContent = 'Editar Libro';
+                document.getElementById('book-id').value = book.id;
+                document.getElementById('title').value = book.title;
+                document.getElementById('author').value = book.author;
+                document.getElementById('description').value = book.description || '';
+                document.getElementById('price').value = book.price;
+                document.getElementById('stock').value = book.stock;
+                document.getElementById('image').value = book.image;
+            } else {
+                modalTitle.textContent = 'Agregar Nuevo Libro';
+                form.reset();
+            }
+            
+            bookModal.style.display = 'block';
+        }
+        
+        function showBookDetails(book) {
+            document.getElementById('detail-title').textContent = book.title;
+            document.getElementById('detail-author').textContent = `Autor: ${book.author}`;
+            document.getElementById('detail-description').textContent = book.description || 'No hay descripción disponible.';
+            document.getElementById('detail-price').textContent = book.price;
+            document.getElementById('detail-stock').textContent = book.stock;
+            document.getElementById('detail-img').src = book.image;
+            document.getElementById('detail-img').alt = `Portada de ${book.title}`;
+            
+            detailModal.style.display = 'block';
+        }
+        
+        async function loadBooks() {
+            try {
+                const response = await fetch('http://localhost:5000/api/books');
+                
+                if (!response.ok) {
+                    throw new Error('Error al cargar los libros');
+                }
+                
+                books = await response.json();
+                renderBooksTable();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al cargar los libros: ' + error.message);
+            }
+        }
+        
+        function renderBooksTable() {
+            booksTable.innerHTML = '';
+            
+            books.forEach(book => {
+                const row = booksTable.insertRow();
+                
+                row.innerHTML = `
+                    <td>${book.id}</td>
+                    <td><img src="${book.image}" alt="${book.title}" class="book-thumbnail"></td>
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td class="actions">
+                        <button class="btn btn-view" data-id="${book.id}">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-edit" data-id="${book.id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-delete" data-id="${book.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+            });
+            
+            // Agregar event listeners a los botones
+            document.querySelectorAll('.btn-view').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const bookId = e.currentTarget.getAttribute('data-id');
+                    const book = books.find(b => b.id == bookId);
+                    showBookDetails(book);
+                });
+            });
+            
+            document.querySelectorAll('.btn-edit').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const bookId = e.currentTarget.getAttribute('data-id');
+                    const book = books.find(b => b.id == bookId);
+                    openBookModal(book);
+                });
+            });
+            
+            document.querySelectorAll('.btn-delete').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    currentBookId = e.currentTarget.getAttribute('data-id');
+                    confirmModal.style.display = 'block';
+                });
+            });
+        }
+        
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Validación
+            if (!validateForm()) return;
+            
+            const formData = {
+                title: document.getElementById('title').value.trim(),
+                author: document.getElementById('author').value.trim(),
+                description: document.getElementById('description').value.trim(),
+                price: parseFloat(document.getElementById('price').value),
+                stock: parseInt(document.getElementById('stock').value),
+                image: document.getElementById('image').value.trim()
+            };
+            
+            const bookId = document.getElementById('book-id').value;
+            const isEdit = !!bookId;
+            
+            try {
+                let response;
+                
+                if (isEdit) {
+                    response = await fetch(`http://localhost:5000/api/books/${bookId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                } else {
+                    response = await fetch('http://localhost:5000/api/books', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                }
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error al guardar el libro');
+                }
+                
+                const result = await response.json();
+                alert(`Libro ${isEdit ? 'actualizado' : 'agregado'} correctamente`);
+                closeAllModals();
+                loadBooks();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+            }
+        }
+        
+        function validateForm() {
+            let isValid = true;
+            const title = document.getElementById('title').value.trim();
+            const author = document.getElementById('author').value.trim();
+            const price = document.getElementById('price').value;
+            const stock = document.getElementById('stock').value;
+            const image = document.getElementById('image').value.trim();
+            
+            // Resetear mensajes de error
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.textContent = '';
+            });
+            
+            if (!title) {
+                document.getElementById('title-error').textContent = 'El título es requerido';
+                isValid = false;
+            }
+            
+            if (!author) {
+                document.getElementById('author-error').textContent = 'El autor es requerido';
+                isValid = false;
+            }
+            
+            if (!price || isNaN(price) || parseFloat(price) <= 0) {
+                document.getElementById('price-error').textContent = 'Precio inválido';
+                isValid = false;
+            }
+            
+            if (!stock || isNaN(stock) || parseInt(stock) < 0) {
+                document.getElementById('stock-error').textContent = 'Stock inválido';
+                isValid = false;
+            }
+            
+            if (!image) {
+                document.getElementById('image-error').textContent = 'La URL de la imagen es requerida';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        async function deleteBook() {
+            try {
+                const response = await fetch(`http://localhost:5000/api/books/${currentBookId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Error al eliminar el libro');
+                }
+                
+                alert('Libro eliminado correctamente');
+                confirmModal.style.display = 'none';
+                loadBooks();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al eliminar el libro: ' + error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>
