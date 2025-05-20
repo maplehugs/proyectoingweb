@@ -1069,3 +1069,325 @@ input[type="button"]:active {
     max-height: 300px;
     padding: 0.5rem 1rem;
 }
+/* Estilos para la gestión de libros */
+.management-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.management-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2.2rem;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    margin-bottom: 20px;
+    width: 100px;
+    display: block;
+    margin-left: auto;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.btn-secondary {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #ddd;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.btn-view {
+    background-color: #2196F3;
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #FFC107;
+    color: black;
+    margin-right: 5px;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.management-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.management-table th, .management-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.management-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.management-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.book-thumbnail {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-modal {
+    max-width: 400px;
+    text-align: center;
+}
+
+.detail-modal {
+    max-width: 800px;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Detail view styles */
+.detail-container {
+    display: flex;
+    gap: 20px;
+}
+
+.detail-image {
+    flex: 1;
+}
+
+.detail-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.detail-info {
+    flex: 2;
+}
+
+.detail-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.detail-author {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.detail-description {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.detail-price, .detail-stock {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+/* Contenedor general de la sección de detalle */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+}
+
+/* Título principal */
+.container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Bona Nova', serif;
+    margin-bottom: 40px;
+    color: #000000;
+}
+
+/* Contenedor fila con imagen e info */
+.fila-detalle {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+/* Cuadro de imagen */
+.cuadro-imagen {
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+}
+
+.cuadro-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Cuadro de información */
+.cuadro-info {
+    flex: 2;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: left;
+    line-height: 1.5;
+}
+
+.cuadro-info p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+.cuadro-info p strong {
+    color: #000;
+    font-weight: bold;
+}
+
+/* Botón centrado */
+.boton-volver-container {
+    text-align: center;
+}
+
+.btn-volver {
+    padding: 10px 20px;
+    background-color: #d27d14;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #2980b9;
+}
+
